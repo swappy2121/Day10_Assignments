@@ -52,6 +52,16 @@ class AddressBook {
             }
         }
     }
+
+    // deleting a person
+    void deletePerson(String n) {
+        for (int i = 0; i < persons.size(); i++) {
+            PersonInfo p = (PersonInfo) persons.get(i);
+            if (n.equals(p.First_Name)) {
+                persons.remove(i);
+            }
+        }
+    }
 }
 
        public class GetDetails {
@@ -62,7 +72,7 @@ class AddressBook {
                 int ch;
 
                 while (true) {
-                    input = JOptionPane.showInputDialog("Enter 1 to Add\nEnter 2 to Search\nEnter 3 to Exit");
+                    input = JOptionPane.showInputDialog("Enter 1 to Add\nEnter 2 to Search\nEnter 3 to Delete\nEnter 4 to Exit");
                     ch = Integer.parseInt(input);
 
 
@@ -75,6 +85,10 @@ class AddressBook {
                             ab.searchPerson(s);
                             break;
                         case 3:
+                            s = JOptionPane.showInputDialog("Enter name to delete:");
+                            ab.deletePerson(s);
+                            break;
+                        case 4:
                             System.exit(0);
                     }
                 }
